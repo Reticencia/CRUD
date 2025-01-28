@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>Crea una nueva tarea</title>
+    </head>
+
+    <body>
+        <!--Si queremos que el formulario se quede en la misma pagian en esta 
+        caso en la principal, es solo dejarlo vacio-->
+        <form action="" method="POST">{% csrf_token %}
+            
+            <p>Titulo:</p>
+            <input type="text" name="Create">
+
+            <p>Inserte descripcion:</p>
+            <input type="text" name="Description">
+
+            <p>Fecha LImite para la tarea:</p>
+            <input type="date" name="Fecha">
+            
+            <input type="submit" name="Enviar">
+        </form>
+
+        <p><a href="{% url 'espera' %}">Ver mis registros</a></p>
+        
+        <p><a href="{% url 'editar' %}">Editar tareas</a></p>
+    </body>
+</html>

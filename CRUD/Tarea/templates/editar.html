@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>Editar</title>
+    </head>
+    <body>
+
+        <form action="/editar/" method="post">{% csrf_token %}
+            <input type="hidden" name="form1">
+
+            <p>Ingrese el id del que quiere ver mas a profundidad</p>
+        
+            <input type="text" name="id_">
+        
+            <!--<input type="submit" value="Enviar">-->
+            <button type="submit">Enviar</button>
+        
+        </form>
+        
+        <p>Lo recolectado:</p>
+        
+        <p>Nombre de la tarea: {{ info.titulo }}</p>
+        
+        <p>Descripcion: {{ info.descripcion }}</p>
+        
+        <p>Fecha de expiro: {{ info.fecha_vencimiento }}</p>
+        
+        <p>Estado de la tarea: {{ info.completa }} </p>
+
+        <form action="/editar/" method="post">{% csrf_token %}
+
+            <input type="hidden" name="form2">
+
+            <p>ID:</p>
+            <input type="text" name="id_">
+
+            <p>Editar titulo:</p>
+            <input type="text" name="edit_titulo">
+
+            <input type="checkbox" name="true">
+
+            <button type="submit">Cambios</button>
+
+        </form>
+
+    </body>
+</html>

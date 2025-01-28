@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <title>Metas</title>
+    </head>
+
+    <body>
+        
+        <h1>Lista general de Tareas</h1>
+        <ul>
+            {% for tarea in ver%}
+                <li>{{ tarea.id }}: {{ tarea.titulo }} {{ tarea.fecha_vencimiento}}</li>
+            {% endfor %}
+        </ul>
+
+    </body>
+</html>

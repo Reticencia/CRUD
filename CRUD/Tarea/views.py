@@ -53,7 +53,9 @@ def editar(request):
 
             edit_=request.POST['edit_titulo']
 
-            comple=request.POST['true']
+            comple=request.POST.get('true')
+
+            eliminar=request.POST.get('del') == "1"
             
             lol = Tarea.objects.get(id=idEdit)
 
@@ -65,15 +67,15 @@ def editar(request):
 
             #Siempre que se trabaje con instancias se debe hacer llamar al save() para que los campos se actualizen
 
+            if eliminar:
+                lol.delete()
+
             if edit_:
                 lol.titulo = edit_
                 #Siempre que se trabaje con los checkbox por defecto devuelven 'on' o 'off'
                 lol.completa = True if comple == 'on' else False
                 lol.save()
-
-            
-            
-
+                
             return render(request, 'editar.html')
 
 

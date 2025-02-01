@@ -16,11 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from Tarea.views import Create, wait, editar
+from Tarea.views import Create, task, edit, Eliminar
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', Create, name="inicio"),
-    path('esperar/', wait, name="espera"),
-    path('editar/', editar, name="editar")
+    path('tareas/', task, name="inicio"),
+    path('agreagar/', Create, name="agregar"),
+    path('detail/<int:id>', edit, name="editar"),
+    path('eliminar/<int:id>/', Eliminar, name='eliminar'),
 ]

@@ -4,13 +4,37 @@
     </head>
 
     <body>
-        
-        <h1>Lista general de Tareas</h1>
-        <ul>
-            {% for tarea in ver%}
-                <li>{{ tarea.id }}: {{ tarea.titulo }} {{ tarea.fecha_vencimiento}}</li>
-            {% endfor %}
-        </ul>
 
+        <h1>Tareas:</h1>
+
+        <hr/>
+
+        <table border="1">
+                <tr>
+                    <th>Tarea</th>
+                    <th>Fecha de vencimiento</th>
+                    <th>Estado</th>
+                </tr>
+            <!--
+            Para que esto fuencione es necesario, que se coloque var como tal ya que es una lista y si se coloca var.id por ejemplo 
+            esto no es un objeto iterable
+            -->
+            {% for tarea in ver %}
+
+                <tr>
+                    <td>
+                        <a href="{% url 'editar' tarea.id%}">{{ tarea.titulo }}</a>
+                    </td>
+                    <td>
+                        {{ tarea.fecha_vencimiento }}
+                    </td>
+                    <td>
+                        {{ tarea.completa }}
+                    </td>
+                </tr>
+ 
+            {% endfor %}
+        </table>
+        <a href="{% url 'agregar' %}">Crear una Task</a>
     </body>
 </html>

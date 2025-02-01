@@ -4,27 +4,26 @@
     </head>
     <body>
 
-        <form action="/editar/" method="post">{% csrf_token %}
-            <input type="hidden" name="form1">
-
-            <p>Ingrese el id del que quiere ver mas a profundidad</p>
-        
-            <input type="text" name="id_">
-        
-            <!--<input type="submit" value="Enviar">-->
-            <button type="submit">Enviar</button>
-        
-        </form>
-        
         <p>Lo recolectado:</p>
-        
-        <p>Nombre de la tarea: {{ info.titulo }}</p>
-        
-        <p>Descripcion: {{ info.descripcion }}</p>
-        
-        <p>Fecha de expiro: {{ info.fecha_vencimiento }}</p>
-        
-        <p>Estado de la tarea: {{ info.completa }} </p>
+        {% for lol in task %}
+
+            <form action="{% url 'eliminar' id=lol.id %}" method="post">{% csrf_token %}
+
+                    Titulo: <input type="text" name="titulo" placeholder="{{ lol.titulo }}"><br><br>
+                    Descripcion: <textarea name="Des" placeholder="{{ lol.descripcion }}"></textarea><br><br>
+                    Fecha:{{ lol.fecha_vencimiento }} 
+                    <input type="date" name="Date"><br><br>
+
+                    Completado: <input type="checkbox" name="tr"><br><br>
+
+                    <button type="submit" name="del" value="1">Eliminar</button><br><br>
+
+                    <button type="submit">Cambios</button>
+            </form>
+
+        {% endfor %}
+
+        <!--
 
         <form action="/editar/" method="post">{% csrf_token %}
 
@@ -38,11 +37,8 @@
 
             <input type="checkbox" name="true">
 
-            <button type="submit" name="del" value="1">Eliminar</button>
-
-            <button type="submit">Cambios</button>
-
         </form>
-
+        -->
+        <a href="{% url 'inicio' %}">Regresar</a>
     </body>
 </html>

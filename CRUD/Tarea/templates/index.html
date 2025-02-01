@@ -12,7 +12,7 @@
             <input type="text" name="Create">
 
             <p>Inserte descripcion:</p>
-            <input type="text" name="Description">
+            <textarea name="Description"></textarea>
 
             <p>Fecha LImite para la tarea:</p>
             <input type="date" name="Fecha">
@@ -20,8 +20,6 @@
             <input type="submit" name="Enviar">
         </form>
 
-        <p><a href="{% url 'espera' %}">Ver mis registros</a></p>
-        
-        <p><a href="{% url 'editar' %}">Editar tareas</a></p>
+        <a href="{% url 'inicio' %}">Regresar</a>
     </body>
 </html>

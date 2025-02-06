@@ -97,12 +97,18 @@ def Eliminar(request, id):
 
         edit_=request.POST['titulo']
 
+        description = request.POST.get('Des')
+
         comple=request.POST.get('tr')
 
         date = request.POST.get('Date')
 
         eli = request.POST.get('del') == '1'
 
+        if description:
+            ala.descripcion = description
+            ala.save()
+            
         if date:
             ala.fecha_vencimiento = date
             ala.save()
